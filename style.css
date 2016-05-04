@@ -35,6 +35,11 @@ div.menu div.submenu {
 	display: inline-block;
 	vertical-align: top;
 }
+
+div.menu div.submenu canvas {
+	display: block;
+}
+
 div.menu div.submenu label {
 	font-style: italic;
 }

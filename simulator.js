@@ -86,7 +86,7 @@ var menus = {};
 
 
 window.onload = function(){
-	render = new Render("maze", 16, 16, PI.wall_map, PI.position, 5, "#EEE", "#000", "#000");
+	render = new Render("form_maze_canvas", 16, 16, PI.wall_map, PI.position, 5, "#EEE", "#000", "#000");
 	
 	menus.maze = document.getElementById("menu_maze");
 	menus.setup = document.getElementById("menu_setup");
@@ -98,6 +98,26 @@ window.onload = function(){
 	menus.program.ownerDocument.getElementById("form_program_go").onclick = go;
 	reset_size();
 	restart();
+}
+
+function save_maze(){
+	var data = {};
+	data.size_w = PI.size_w;
+	data.size_h = PI.size_h;
+	data.maze = [];
+	
+	//Cutting maze
+	for(var y = 0;y < PI.size_h;y++){
+		data.maze[y] = [];
+		for(var x = 0;x < PI.size_w;x++){
+			data.maze[y][x] = [PI.wall_map[y][x][0], PI.wall_map[y][x][1]];
+		}
+	}
+	
+	var w = window.open("save_page.html", "_blank", "toolbar=0,location=0,menubar=0,width=200,height=60");
+	w.onload = function(){
+		w.setup(data, "maze");
+	}
 }
 
 function vertical(dir){
