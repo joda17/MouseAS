@@ -19,8 +19,6 @@
 function hide_menu(e){
 	var menu = e.parentNode.parentNode;
 	var value = menu.hid = (menu.hid == "none") ? "inline-block":"none";
-	console.log(value);
-	console.log(menu.hid);
 	for(var child in menu.children){
 		if(menu.children[child] && menu.children[child].classList && !menu.children[child].classList.contains("title"))
 		menu.children[child].style.display = value;
