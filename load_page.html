@@ -1,0 +1,64 @@
+<!--
+    Mouse AS - Mouse Algorithms Simulator
+    Copyright (C) 2016  Piotr Piątyszek
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+	<head>
+		<script>
+			var callback;
+			var loaded_data;
+			function add_option(name){
+				var option = document.createElement("option");
+				option.value = option.innerHTML = name;
+				document.getElementById("name").appendChild(option);
+			}
+			function setup(category, c){
+				callback = c;
+				loaded = localStorage.getItem("data");
+				if(!loaded)return;
+				var data = JSON.parse(loaded);
+				if(!data || !data[category]);
+				loaded_data = data[category];
+				for(var name in data[category])add_option(name);
+			}
+			function load(name){
+				if(!name || name == "" || !callback || !loaded_data || !loaded_data[name])return;
+				callback(loaded_data[name]);
+				window.close();
+			}
+		</script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			select {
+				width: 200px;
+				height: 30px;
+				display: block;
+			}
+			button {
+				width: 200px;
+				height: 30px;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<select id="name"></select>
+		<button onclick="load(document.getElementById('name').value)">LOAD</button>
+	</body>
+</html>

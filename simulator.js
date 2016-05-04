@@ -120,6 +120,18 @@ function save_maze(){
 	}
 }
 
+function load_maze(){
+	var w = window.open("load_page.html", "_blank", "toolbar=0,location=0,menubar=0,width=200,height=60");
+	w.onload = function(){
+		w.setup("maze", function(data){
+			menus.setup.ownerDocument.getElementById("form_size_cols").value = PI.size_w = data.size_w;
+			menus.setup.ownerDocument.getElementById("form_size_rows").value = PI.size_h = data.size_h;
+			render.walls_map = PI.wall_map = data.maze;
+			reset_size();
+		});
+	}
+}
+
 function vertical(dir){
 	return dir == DIR.UP || dir == DIR.DOWN;
 }
