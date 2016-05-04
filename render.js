@@ -41,7 +41,7 @@ Render = function(canvas_id, size_w, size_h, walls_map, mouse_pos, field_scale, 
 		this.loaded = true;
 		self.draw();
 	}
-	this.mouse_img.src = 'http://www.clker.com/cliparts/c/b/6/q/j/y/het-mouse.svg';
+	this.mouse_img.src = 'mouse.svg';//http://www.clker.com/clipart-simple-cartoon-mouse-2.html
 
 	this.canvas.addEventListener('mousedown', function(e){
 		e.preventDefault();
