@@ -1,0 +1,70 @@
+<!--
+    Mouse AS - Mouse Algorithms Simulator
+    Copyright (C) 2016  Piotr Piątyszek
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+	<head>
+		<script src="render.js"></script>
+		<meta charset="UTF-8">
+		<script src="simulator.js"></script>
+		<script src="menu.js"></script>
+		<link rel="Stylesheet" type="text/css" href="style.css" />
+	</head>
+	<body>
+		<div class="menu" id="menu_maze">
+			<div class="title"><span>Labirynt</span> <span class="hide_button" onclick="hide_menu(this)">^</span> <span class="unpin_button" onclick="unpin_menu(this)">•</span></div>
+			<canvas id="maze"></canvas>
+		</div>
+		<div class="menu" id="menu_setup">
+			<div class="title"><span>Ustawienia</span> <span class="hide_button" onclick="hide_menu(this)">^</span> <span class="unpin_button" onclick="unpin_menu(this)">•</span></div>
+			<div class="submenu" id="form_size">
+				<div><label for="form_size_height">Wysokość: </label><input class="small" type="text" id="form_size_height" value="200"></div>
+				<div><label for="form_size_width">Szerokość: </label><input class="small" type="text" id="form_size_width" value="200"></div>
+				<div><label for="form_size_rows">Liczba wierszy: </label><input class="small" type="text" id="form_size_rows" value="3"></div>
+				<div><label for="form_size_cols">Liczba kolumn: </label><input class="small" type="text" id="form_size_cols" value="3"></div>
+				<div><button id="form_size_reset">RESET</button></div>
+			</div>
+
+			<div class="submenu" id="form_pos">
+				<div><label for="form_pos_start_x">Położenie startowe X: </label><input class="small" type="text" id="form_pos_start_x" value="0"></div>
+				<div><label for="form_pos_start_y">Położenie startowe Y: </label><input class="small" type="text" id="form_pos_start_y" value="0"></div>
+				<div>
+					<label for="form_pos_start_rotatation">Orientacja startowa: </label>
+					<select id="form_pos_start_rotation">
+						<option value="left">Lewo</option>
+						<option value="right">Prawo</option>
+						<option value="up">Góra</option>
+						<option value="down">Dół</option>
+					</select>
+				</div>
+				<div><label for="form_pos_end_x">Położenie końcowe X: </label><input class="small" type="text" id="form_pos_end_x" value="5"></div>
+				<div><label for="form_pos_end_y">Położenie końcowe Y: </label><input class="small" type="text" id="form_pos_end_y" value="5"></div>
+			</div>
+		</div>
+		<div class="menu" id="menu_program">
+			<div class="title"><span>Program</span> <span class="hide_button" onclick="hide_menu(this)">^</span> <span class="unpin_button" onclick="unpin_menu(this)">•</span></div>
+			<div class="submenu" id="form_program">
+				<label for="form_program_src">Program:</label><textarea id="form_program_src"></textarea>
+				<button id="form_program_restart">RESTART</button>
+				<button id="form_program_single">SINGLE MOVE</button>
+				<button id="form_program_go">GO</button>
+			</div>
+			<div class="submenu" id="form_logs">
+				<label for="form_logs_src">Logi:</label><textarea id="form_logs_src"></textarea>
+			</div>
+		</div>
+	</body>
+</html>

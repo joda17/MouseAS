@@ -1,0 +1,63 @@
+/*
+    Mouse AS - Mouse Algorithms Simulator
+    Copyright (C) 2016  Piotr Piątyszek
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+#maze {
+	height: 600px;
+	width: 600px;
+}
+div.menu {
+	border: 2px solid gray;
+	display: table;
+	margin: 10px;
+}
+div.menu div.submenu {
+	margin: 2px;
+	padding: 5px;
+	display: inline-block;
+	vertical-align: top;
+}
+div.menu div.submenu label {
+	font-style: italic;
+}
+div.menu div {
+	margin: 5px 0;
+}
+div.menu div.title {
+	display: block;
+	font-size: 16px;
+	font-weight: bold;
+	margin: 0 10px;
+	position: relative;
+	top: -10px;
+	display: table;
+}
+			div.menu div.title span { 
+				background: white;
+			}
+			div.menu textarea {
+				display: block;
+				width: 500px;
+				height: 300px;
+			}
+			div.menu input.small[type=text] {
+				width: 100px;
+			}
