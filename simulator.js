@@ -97,6 +97,7 @@ window.onload = function(){
 	menus.program.ownerDocument.getElementById("form_program_single").onclick = single_move;
 	menus.program.ownerDocument.getElementById("form_program_go").onclick = go;
 	reset_size();
+	restart();
 }
 
 function vertical(dir){
@@ -139,6 +140,11 @@ function reset_size(){
 
 function restart(){
 	PI.inited = false;
+	PI.start_position[0] = Number.parseInt(menus.setup.ownerDocument.getElementById("form_pos_start_x").value);
+	PI.start_position[1] = Number.parseInt(menus.setup.ownerDocument.getElementById("form_pos_start_y").value);
+	PI.start_position[2] = Number.parseInt(menus.setup.ownerDocument.getElementById("form_pos_start_rotation").value);
+	PI.end_position[0] = Number.parseInt(menus.setup.ownerDocument.getElementById("form_pos_end_x").value);
+	PI.end_position[1] = Number.parseInt(menus.setup.ownerDocument.getElementById("form_pos_end_y").value);
 	PI.position = PI.start_position;
 	PI.exit = false;
 	render.mouse_pos = PI.position;
