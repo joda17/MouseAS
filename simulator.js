@@ -100,6 +100,10 @@ window.onload = function(){
 	restart();
 }
 
+function clone(obj){
+	return JSON.parse(JSON.stringify(obj));
+}
+
 function save_maze(){
 	var data = {};
 	data.size_w = PI.size_w;
@@ -219,7 +223,7 @@ function single_move(){
 	else {
 		restart();
 		try {
-			F.init(PI.start_position, PI.end_position);
+			F.init(clone(PI.start_position), clone(PI.end_position));
 			PI.inited = true;
 		}
 		catch(e){
