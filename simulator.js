@@ -96,6 +96,10 @@ window.onload = function(){
 	menus.program.ownerDocument.getElementById("form_program_restart").onclick = restart;
 	menus.program.ownerDocument.getElementById("form_program_single").onclick = single_move;
 	menus.program.ownerDocument.getElementById("form_program_go").onclick = go;
+	menus.program.ownerDocument.getElementById("form_program_save").onclick = save_program;
+	menus.program.ownerDocument.getElementById("form_program_load").onclick = load_program;
+	menus.program.ownerDocument.getElementById("form_maze_save").onclick = save_maze;
+	menus.program.ownerDocument.getElementById("form_maze_load").onclick = load_maze;
 	reset_size();
 	restart();
 }
