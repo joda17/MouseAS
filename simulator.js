@@ -120,6 +120,24 @@ function save_maze(){
 	}
 }
 
+function save_program(){
+	var data = {};
+	data.src = menus.program.ownerDocument.getElementById("form_program_src").value;
+	var w = window.open("save_page.html", "_blank", "toolbar=0,location=0,menubar=0,width=200,height=60");
+	w.onload = function(){
+		w.setup(data, "program");
+	}
+}
+
+function load_program(){
+	var w = window.open("load_page.html", "_blank", "toolbar=0,location=0,menubar=0,width=200,height=60");
+	w.onload = function(){
+		w.setup("program", function(data){
+			menus.program.ownerDocument.getElementById("form_program_src").value = data.src;
+		});
+	}
+}
+
 function load_maze(){
 	var w = window.open("load_page.html", "_blank", "toolbar=0,location=0,menubar=0,width=200,height=60");
 	w.onload = function(){
