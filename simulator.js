@@ -201,6 +201,7 @@ function restart(){
 	PI.end_position[1] = Number.parseInt(menus.setup.ownerDocument.getElementById("form_pos_end_y").value);
 	PI.position = PI.start_position;
 	PI.exit = false;
+	M = {};
 	render.mouse_pos = PI.position;
 	render.draw();
 }
