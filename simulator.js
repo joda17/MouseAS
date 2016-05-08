@@ -122,7 +122,7 @@ window.onload = function(){
 function get_url_parms(){
 	var parms = window.location.search.substr(1).split("&");	//substr(1) to remove "?"
 	var tab = {};
-	for(let p of parms){
+	for(var p of parms){
 		var s = p.split("=");
 		if(s.length == 2)tab[s[0]] = s[1];
 	}
