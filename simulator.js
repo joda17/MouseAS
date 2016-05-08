@@ -83,9 +83,10 @@ var CF = {	// Control functions
 };
 
 var menus = {};
-
+var parms = {};
 
 window.onload = function(){
+	parms = get_url_parms();
 	render = new Render("form_maze_canvas", 16, 16, PI.wall_map, PI.position, 5, "#EEE", "#000", "#000");
 	
 	menus.maze = document.getElementById("menu_maze");
@@ -100,12 +101,32 @@ window.onload = function(){
 	menus.program.ownerDocument.getElementById("form_program_load").onclick = load_program;
 	menus.program.ownerDocument.getElementById("form_maze_save").onclick = save_maze;
 	menus.program.ownerDocument.getElementById("form_maze_load").onclick = load_maze;
+	menus.program.ownerDocument.getElementById("form_maze_export").onclick = export_maze;
 	
 	menus.program.ownerDocument.getElementById("form_program_src").innerHTML = atob("Ri5pbml0ID0gZnVuY3Rpb24oc3RhcnRfcG9zLCBlbmRfcG9zKXsKICBNLnBvcyA9IHN0YXJ0X3BvczsKICBNLmVuZF9wb3MgPSBlbmRfcG9zOwogIE0ubW92ZSA9IGZhbHNlOwogIENGLmxvZygiU1RBUlQiKTsKfQoKRi5tb3ZlX3N0cmFpZ2h0ID0gZnVuY3Rpb24oKXsKICBDRi5tb3ZlKERJUi5GUk9OVCk7CiAgaWYoTS5wb3NbMl0gPT0gRElSLlVQKU0ucG9zWzFdLS07CiAgZWxzZSBpZihNLnBvc1syXSA9PSBESVIuRE9XTilNLnBvc1sxXSsrOwogIGVsc2UgaWYoTS5wb3NbMl0gPT0gRElSLkxFRlQpTS5wb3NbMF0tLTsKICBlbHNlIGlmKE0ucG9zWzJdID09IERJUi5SSUdIVClNLnBvc1swXSsrOwp9CgpGLm1vdmVfbGVmdCA9IGZ1bmN0aW9uKCl7CiAgQ0YubW92ZShESVIuTEVGVCk7CiAgTS5wb3NbMl0gPSAoTS5wb3NbMl0gKyA0IC0gMSklNDsKfQoKRi5tb3ZlX3JpZ2h0ID0gZnVuY3Rpb24oKXsKICBDRi5tb3ZlKERJUi5SSUdIVCk7CiAgTS5wb3NbMl0gPSAoTS5wb3NbMl0gKyAxKSU0Owp9CgpGLmxvb3AgPSBmdW5jdGlvbigpewogIGlmKE0ucG9zWzBdID09IE0uZW5kX3Bvc1swXSAmJiBNLnBvc1sxXSA9PSBNLmVuZF9wb3NbMV0pewogICAgQ0YuZXhpdCgpOwogICAgQ0YubG9nKCJFWElUIik7CiAgICByZXR1cm47CiAgfQogIGlmKE0ubW92ZSl7CiAgICBNLm1vdmUgPSBmYWxzZTsKICAgIEYubW92ZV9zdHJhaWdodCgpOwogICAgcmV0dXJuOwogIH0KICB2YXIgc2Vuc29ycyA9IENGLmdldF9zZW5zb3JzKCk7CiAgaWYoc2Vuc29yc1swXSA9PSAwKXsKICAgIE0ubW92ZSA9IHRydWU7CiAgICBGLm1vdmVfbGVmdCgpOwogICAgcmV0dXJuOwogIH0KICBlbHNlIGlmKHNlbnNvcnNbMV0gPT0gMCl7CiAgICBGLm1vdmVfc3RyYWlnaHQoKTsKICAgIHJldHVybjsKICB9CiAgZWxzZSB7CiAgICBGLm1vdmVfcmlnaHQoKTsKICAgIHJldHVybjsKICB9Cn0=");
 	reset_size();
-	PI.wall_map = JSON.parse("[[[0,0],[0,1],[0,0],[0,0],[0,0],[0,0],[0,1],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,1],[1,1],[1,0],[1,0],[0,0],[0,1],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[1,0],[0,1],[1,0],[1,0],[0,1],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[1,0],[1,0],[0,0],[0,1],[1,1],[0,1],[0,1],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[1,0],[1,0],[0,0],[0,0],[0,1],[1,0],[0,1],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,1],[1,0],[0,0],[0,0],[0,1],[1,1],[1,1],[1,0],[1,0],[0,1],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[1,0],[1,1],[1,0],[1,0],[0,1],[0,1],[0,1],[0,1],[0,1],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[1,1],[1,0],[0,0],[1,0],[0,1],[0,1],[0,0],[1,1],[0,0],[0,1],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[1,0],[0,1],[0,1],[0,1],[0,1],[1,1],[1,0],[0,0],[1,1],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[1,0],[0,0],[0,0],[0,1],[0,1],[0,0],[0,1],[1,1],[1,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[1,0],[1,0],[1,0],[1,0],[0,1],[1,1],[0,0],[0,1],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,1],[0,0],[1,1],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[1,0],[1,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]]");
+	if(parms.maze){
+		try {
+			var data = JSON.parse(atob(parms.maze));
+			menus.setup.ownerDocument.getElementById("form_size_cols").value = PI.size_w = data.size_w;
+			menus.setup.ownerDocument.getElementById("form_size_rows").value = PI.size_h = data.size_h;
+			PI.wall_map = data.maze;
+			reset_size();
+		}
+		catch(e){}
+	}
 	render.walls_map = PI.wall_map;
 	restart();
+}
+
+function get_url_parms(){
+	var parms = window.location.search.substr(1).split("&");	//substr(1) to remove "?"
+	var tab = {};
+	for(let p of parms){
+		var s = p.split("=");
+		if(s.length == 2)tab[s[0]] = s[1];
+	}
+	return tab;
 }
 
 function clone(obj){
@@ -129,6 +150,27 @@ function save_maze(){
 	var w = window.open("save_page.html", "_blank", "toolbar=0,location=0,menubar=0,width=200,height=60");
 	w.onload = function(){
 		w.setup(data, "maze");
+	}
+}
+
+function export_maze(){
+	var data = {};
+	data.size_w = PI.size_w;
+	data.size_h = PI.size_h;
+	data.maze = [];
+	
+	//Cutting maze
+	for(var y = 0;y < PI.size_h;y++){
+		data.maze[y] = [];
+		for(var x = 0;x < PI.size_w;x++){
+			data.maze[y][x] = [PI.wall_map[y][x][0], PI.wall_map[y][x][1]];
+		}
+	}
+	var l = window.location;
+	var url = l.protocol + "//" + l.hostname + (l.port != "" && l.port != null ? ":":"") + l.port + l.pathname + "?maze=" + btoa(JSON.stringify(data));	//btoa - text -> base64
+	var w = window.open("export_page.html", "_blank", "toolbar=0,location=0,menubar=0,width=600,height=300");
+	w.onload = function(){
+		w.document.getElementById("input").innerHTML = url; 
 	}
 }
 
