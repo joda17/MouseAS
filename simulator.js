@@ -123,8 +123,8 @@ function get_url_parms(){
 	var parms = window.location.search.substr(1).split("&");	//substr(1) to remove "?"
 	var tab = {};
 	for(var p of parms){
-		var s = p.split("=");
-		if(s.length == 2)tab[s[0]] = s[1];
+		var s = p.split("=", 2);
+		tab[s[0]] = s[1];
 	}
 	return tab;
 }
