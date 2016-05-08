@@ -47,7 +47,7 @@ Render = function(canvas_id, size_w, size_h, walls_map, mouse_pos, field_scale, 
 		e.preventDefault();
 		self.canvas_left = self.canvas.offsetLeft;
 		self.canvas_top = self.canvas.offsetTop;
-		var wall = self.get_wall(e.layerX - self.canvas_left, e.layerY - self.canvas_top);
+		var wall = self.get_wall(e.pageX - self.canvas_left, e.pageY - self.canvas_top);
 		if(wall[0] >= 0 && wall[1] >= 0){
 			self.walls_map[wall[1]][wall[0]][wall[2]] = self.walls_map[wall[1]][wall[0]][wall[2]]  ? 0:1;
 		}
